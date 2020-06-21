@@ -9,7 +9,8 @@ using namespace std;
 class Solution
 {
 public:
-	//解法一：hash方法，如果不限定nums值的范围，就只能使用这个方法【通用性强，但并非当前问题的最优解】
+	//解法1：hash方法，如果不限定nums值的范围，就只能使用这个方法【通用性强，但并非当前问题的最优解】
+	//核心思想：哈希表
 	//空间复杂度：O(n)		时间复杂度：O(n)
 	/*
 	int findRepeatNumber(vector<int>& nums)
@@ -23,8 +24,9 @@ public:
 	}
 	*/
 
-	//解法二：数组哈希方法【限定条件：nums值的范围为 0 ~ (n-1)】
+	//解法2：数组哈希方法【限定条件：nums值的范围为 0 ~ (n-1)】
 	//可以直接构造一个n大小的数组，索引为key，出现次数为value，用数组来当做哈希表使用;
+	//核心思想：哈希表
 	//空间复杂度：O(n)		时间复杂度：O(n)
 	/*
 	int findRepeatNumber(vector<int>& nums)
@@ -40,7 +42,22 @@ public:
 	}
 	*/
 
-	//解法三：按位置置换排序，置换正确的数字到正确的索引位置【限定条件nums的值只会出现0 ~（n-1）】
+	//解法3：最低效的方法，排序之后再来检查
+	//核心思想：排序
+	//空间复杂度：O(1)		时间复杂度：O(nlogn)
+	/*
+	int findRepeatNumber(vector<int>& nums)
+	{
+		sort(nums.begin(), nums.end());
+		for (int i = 1; i < nums.size(); ++i) {
+			if (nums[i-1] == nums[i]) return nums[i];
+		}
+		return -1;//未定义行为，实际用例执行不到这里
+	}
+	*/
+
+	//解法4：按位置置换排序，置换正确的数字到正确的索引位置【限定条件nums的值只会出现0 ~（n-1）】
+	//核心思想：排序
 	//空间复杂度：O(1)		时间复杂度：O(n)
 	int findRepeatNumber(vector<int>& nums)
 	{
