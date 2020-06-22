@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//解法1：如果按照从前往后合并，就会需要开辟空间或者事先拷贝数据出去；但是如果按照从后往前合并，就可以直接合并判断
+//时间复杂度：O(m+n)
 int merge_sorted_array_to_first(int *list1, int len1, int *list2, int len2)
 {
 	if (!list1 || !list2) return -1;
