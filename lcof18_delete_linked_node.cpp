@@ -11,6 +11,9 @@ struct NotFountException : public exception
 	}
 };
 
+//最好时间复杂度：对于n大小的链表，对于非链表尾节点的节点，可以O(1)时间内删除
+//最差时间复杂度：而对于尾部节点，则需要遍历与整个链表找到前序节点O(n)时间
+//平均时间复杂度：[O(n) + (n-1)*O(1)] / n = O(1)
 ListNode* delete_node(ListNode *head, ListNode *to_delete)
 {
 	if (!head || !to_delete) return head;
